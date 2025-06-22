@@ -10,6 +10,20 @@ function generatePassword(event) {
     let numOfUppercaseLetters = document.querySelector('#num-of-uppercase-letters').value;
     let numOfLowercaseLetters = document.querySelector('#num-of-lowercase-letters').value;
     let numOfSpecialCharacters = document.querySelector('#num-of-special-characters').value;
+
+    let uppercaseValues = [];
+    let lowercaseValues = [];
+    let specialCharacterValues = [];
+
+    for (let i = 0; i < numOfUppercaseLetters; i++) {
+        uppercaseValues.push(uppercaseLetters[Math.floor(Math.random() * uppercaseLetters.length)]);
+    }
+    for (let i = 0; i < numOfLowercaseLetters; i++) {
+        lowercaseValues.push(lowercaseLetters[Math.floor(Math.random() * lowercaseLetters.length)]);
+    }
+    for (let i = 0; i < numOfSpecialCharacters; i++) {
+        specialCharacterValues.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
+    }
 }
 
 document.querySelector('#password-form').addEventListener("submit", generatePassword);
