@@ -11,18 +11,16 @@ function generatePassword(event) {
     let numOfLowercaseLetters = document.querySelector('#num-of-lowercase-letters').value;
     let numOfSpecialCharacters = document.querySelector('#num-of-special-characters').value;
 
-    let uppercaseValues = [];
-    let lowercaseValues = [];
-    let specialCharacterValues = [];
+    let unshuffledPassword = [];
 
     for (let i = 0; i < numOfUppercaseLetters; i++) {
-        uppercaseValues.push(uppercaseLetters[Math.floor(Math.random() * uppercaseLetters.length)]);
+        unshuffledPassword.push(uppercaseLetters[Math.floor(Math.random() * uppercaseLetters.length)]);
     }
     for (let i = 0; i < numOfLowercaseLetters; i++) {
-        lowercaseValues.push(lowercaseLetters[Math.floor(Math.random() * lowercaseLetters.length)]);
+        unshuffledPassword.push(lowercaseLetters[Math.floor(Math.random() * lowercaseLetters.length)]);
     }
     for (let i = 0; i < numOfSpecialCharacters; i++) {
-        specialCharacterValues.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
+        unshuffledPassword.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
     }
 }
 
