@@ -4,8 +4,7 @@ const lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 
 const specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', ',', '.', '<', '>', '/', '?'];
 
-function generatePassword(event) {
-    event.preventDefault();
+function generatePassword() {
     function shuffle(array) {
         let remainingElements = array.length;
         let temporaryValue;
@@ -41,4 +40,15 @@ function generatePassword(event) {
     password.append(shuffle(unshuffledPassword).join(''));
 }
 
-document.querySelector('#password-form').addEventListener("submit", generatePassword);
+function resetPassword(event) {
+    event.preventDefault();
+    let password = document.querySelector('#password');
+    if (password.innerHTML.length !== 0) {
+        password.innerHTML = '';
+        generatePassword();
+    } else {
+        generatePassword();
+    }
+}
+
+document.querySelector('#password-form').addEventListener('submit', resetPassword);
