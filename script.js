@@ -37,8 +37,8 @@ function generatePassword(event) {
         unshuffledPassword.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
     }
 
-    let password = shuffle(unshuffledPassword).join('');
-    console.log(password);
+    let password = document.querySelector('#password');
+    password.append(unshuffledPassword.join(''));
 }
 
 document.querySelector('#password-form').addEventListener("submit", generatePassword);
