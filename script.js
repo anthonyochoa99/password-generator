@@ -6,6 +6,20 @@ const specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-'
 
 function generatePassword(event) {
     event.preventDefault();
+    function shuffle(array) {
+        let remainingElements = array.length;
+        let temporaryValue;
+        let randomIndex;
+
+        while (remainingElements) {
+            randomIndex = Math.floor(Math.random() * remainingElements--);
+            temporaryValue = array[remainingElements];
+            array[remainingElements] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    }
 
     let numOfUppercaseLetters = document.querySelector('#num-of-uppercase-letters').value;
     let numOfLowercaseLetters = document.querySelector('#num-of-lowercase-letters').value;
@@ -22,6 +36,9 @@ function generatePassword(event) {
     for (let i = 0; i < numOfSpecialCharacters; i++) {
         unshuffledPassword.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
     }
+
+    let password = shuffle(unshuffledPassword).join('');
+    console.log(password);
 }
 
 document.querySelector('#password-form').addEventListener("submit", generatePassword);
