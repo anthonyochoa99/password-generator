@@ -3,3 +3,13 @@ const uppercaseLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
 const lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 const specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', ',', '.', '<', '>', '/', '?'];
+
+function generatePassword(event) {
+    event.preventDefault();
+
+    let numOfUppercaseLetters = document.querySelector('#num-of-uppercase-letters').value;
+    let numOfLowercaseLetters = document.querySelector('#num-of-lowercase-letters').value;
+    let numOfSpecialCharacters = document.querySelector('#num-of-special-characters').value;
+}
+
+document.querySelector('#password-form').addEventListener("submit", generatePassword);
