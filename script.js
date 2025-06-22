@@ -38,16 +38,37 @@ function generatePassword() {
 
     let password = document.querySelector('#password');
     password.append(shuffle(unshuffledPassword).join(''));
+    checkPasswordStrength();
 }
 
 function resetPassword(event) {
     event.preventDefault();
     let password = document.querySelector('#password');
+    let passwordStrength = document.querySelector('#password-strength');
     if (password.innerHTML.length !== 0) {
         password.innerHTML = '';
+        passwordStrength.innerHTML = '';
         generatePassword();
     } else {
         generatePassword();
+    }
+}
+
+function checkPasswordStrength() {
+    let uppercaseCount = parseInt(document.querySelector('#num-of-uppercase-letters').value);
+    let lowercaseCount = parseInt(document.querySelector('#num-of-lowercase-letters').value);
+    let specialCharactersCount = parseInt(document.querySelector('#num-of-special-characters').value);
+    let totalCount = uppercaseCount + lowercaseCount + specialCharactersCount;
+    let passwordStrength = document.querySelector('#password-strength');
+
+    if (totalCount <= 8) {
+        passwordStrength.append('Password strength: WEAK');
+    } else if (totalCount >= 9 && totalCount <= 12) {
+        passwordStrength.append('Password strength: MODERATE');
+    } else if (totalCount > 12 && totalCount <= 16) {
+        passwordStrength.append('Password strength: STRONG');
+    } else {
+        passwordStrength.append('Password strength: VERY STRONG');
     }
 }
 
