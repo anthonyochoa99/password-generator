@@ -3,10 +3,11 @@ header {
     justify-content: center;
 }
 
-section {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
 }
 
 form {
@@ -17,4 +18,16 @@ form {
     width: fit-content;
     padding: 10px;
     border: 2px solid black;
+}
+.tips {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
