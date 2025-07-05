@@ -31,3 +31,9 @@ ul {
   flex-direction: column;
   gap: 10px;
 }
+
+.password-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -5,6 +5,8 @@ const lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 const specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', ',', '.', '<', '>', '/', '?'];
 
 function generatePassword() {
+    let copyButton = document.querySelector('.copy');
+    copyButton.innerHTML = 'copy';
     function shuffle(array) {
         let remainingElements = array.length;
         let temporaryValue;
@@ -43,11 +45,21 @@ function generatePassword() {
 
 function resetPassword(event) {
     event.preventDefault();
+    const passwordContainer = document.querySelector('.password-container');
+    const copy = document.createElement('button');
+
+    copy.classList.add('copy');
+    copy.setAttribute('type', 'button');
+    copy.innerHTML = 'copy';
+    passwordContainer.appendChild(copy);
+    copy.addEventListener('click', copyToClipboard);
+
     let password = document.querySelector('#password');
     let passwordStrength = document.querySelector('#password-strength');
     if (password.innerHTML.length !== 0) {
         password.innerHTML = '';
         passwordStrength.innerHTML = '';
+        copy.remove();
         generatePassword();
     } else {
         generatePassword();
@@ -70,6 +82,13 @@ function checkPasswordStrength() {
     } else {
         passwordStrength.append('Password strength: VERY STRONG');
     }
+}
+
+function copyToClipboard() {
+    let copyPassword = document.querySelector('#password').textContent;
+    navigator.clipboard.writeText(copyPassword);
+    let copyButton = document.querySelector('.copy');
+    copyButton.innerHTML = 'copied';
 }
 
 document.querySelector('#password-form').addEventListener('submit', resetPassword);
