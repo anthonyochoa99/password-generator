@@ -4,6 +4,8 @@ const lowercaseLetters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 
 const specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', ',', '.', '<', '>', '/', '?'];
 
+const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
 function generatePassword() {
     let copyButton = document.querySelector('.copy');
     copyButton.innerHTML = 'copy';
@@ -25,6 +27,7 @@ function generatePassword() {
     let numOfUppercaseLetters = document.querySelector('#num-of-uppercase-letters').value;
     let numOfLowercaseLetters = document.querySelector('#num-of-lowercase-letters').value;
     let numOfSpecialCharacters = document.querySelector('#num-of-special-characters').value;
+    let numOfNumbers = document.querySelector('#num-of-numbers').value;
 
     let unshuffledPassword = [];
 
@@ -36,6 +39,9 @@ function generatePassword() {
     }
     for (let i = 0; i < numOfSpecialCharacters; i++) {
         unshuffledPassword.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
+    }
+    for (let i = 0; i < numOfNumbers; i++) {
+        unshuffledPassword.push(numbers[Math.floor(Math.random() * numbers.length)]);
     }
 
     let password = document.querySelector('#password');
@@ -70,7 +76,8 @@ function checkPasswordStrength() {
     let uppercaseCount = parseInt(document.querySelector('#num-of-uppercase-letters').value);
     let lowercaseCount = parseInt(document.querySelector('#num-of-lowercase-letters').value);
     let specialCharactersCount = parseInt(document.querySelector('#num-of-special-characters').value);
-    let totalCount = uppercaseCount + lowercaseCount + specialCharactersCount;
+    let numbersCount = parseInt(document.querySelector('#num-of-numbers').value);
+    let totalCount = uppercaseCount + lowercaseCount + specialCharactersCount + numbersCount;
     let passwordStrength = document.querySelector('#password-strength');
 
     if (totalCount <= 8) {
