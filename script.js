@@ -80,14 +80,12 @@ function checkPasswordStrength() {
     let totalCount = uppercaseCount + lowercaseCount + specialCharactersCount + numbersCount;
     let passwordStrength = document.querySelector('#password-strength');
 
-    if (totalCount <= 8) {
+    if (totalCount === 8) {
         passwordStrength.append('Password strength: WEAK');
     } else if (totalCount >= 9 && totalCount <= 12) {
         passwordStrength.append('Password strength: MODERATE');
-    } else if (totalCount > 12 && totalCount <= 16) {
-        passwordStrength.append('Password strength: STRONG');
     } else {
-        passwordStrength.append('Password strength: VERY STRONG');
+        passwordStrength.append('Password strength: STRONG');
     }
 }
 
